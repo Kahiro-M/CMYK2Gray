@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!-- IE8+に対して「IE=edge」と指定することで、利用できる最も互換性の高い最新のエンジンを使用するよう指示できます
+    参考: https://www.modern.ie/en-us/performance/how-to-use-x-ua-compatible -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<!-- ページのタイトルを記述 -->
+<title>cmyk2gray</title>
+
+<!-- パフォーマンスのために使用する文字のエンコーディングを記述
+    参考: https://developers.google.com/speed/docs/best-practices/rendering#SpecifyCharsetEarly -->
+<meta charset="utf-8">
+
+<!-- content属性にページの紹介文を記述 -->
+<meta name="description" content="">
+
+<!-- content属性にページの著者情報を記述 -->
+<meta name="author" content="">
+
+<!-- モバイル端末への対応、ページをビューポートの幅に合わせてレンダリング（Android, iOS6以降）
+    ズームを許可しない設定「user-scalable=no」は加えない -->
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- スタイルシートはできるだけ早くレンダリングされるため、HTMLドキュメントの上の方に記述
+    href属性にスタイルシートファイルのURIを記述 -->
+<link rel="stylesheet" href="">
+
+<!-- IE8以下用に2つのスクリプトを記述
+    html5shiv.js: IE8以下にHTML5の要素を認識するようにさせる
+    respond.js: IE8以下にMedia Queriesの代替え機能を提供 -->
+<!--[if lt IE 9]>
+<script src="//cdn.jsdelivr.net/html5shiv/3.7.2/html5shiv.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/respond.js/1.4.2/respond.min.js"></script>
+<![endif]-->
+
+<!-- href属性にファビコンファイルのURIを記述 -->
+<link rel="shortcut icon" href="">
+
+<!-- コメントアウトしてあるコードは、iOS/Android用のアイコン指定 -->
+<!--
+<meta name="mobile-web-app-capable" content="yes">
+<link rel="icon" sizes="196x196" href="">
+<link rel="apple-touch-icon" sizes="152x152" href="">
+-->
+
+<!-- スクリプトでブロッキングを起こさないものはここに記述
+    可能であれば「async（文書の読み込みが完了した時点でスクリプトを実行）」を使用
+    Example: <script src="" async></script> -->
+    <script type="text/javascript">
+    function culc(){
+      cObj = document.getElementById("inC");
+      mObj = document.getElementById("inM");
+      yObj = document.getElementById("inY");
+      kObj = document.getElementById("inK");
+      cmykSampleObj = document.getElementById("inCMYKsample");
+      rObj = document.getElementById("outR");
+      gObj = document.getElementById("outG");
+      bObj = document.getElementById("outB");
+      outGrayObj = document.getElementById("outGray");
+      outKObj = document.getElementById("outK");
+      kSampleObj = document.getElementById("outKsample");
+
+      c = Math.round(cObj.value/100*255);
+      m = Math.round(mObj.value/100*255);
+      y = Math.round(yObj.value/100*255);
+      k = Math.round(kObj.value/100*255);
+
+      rObj.value = 255 - Math.min(255, c/255*(255-k)+k);
+      gObj.value = 255 - Math.min(255, m/255*(255-k)+k);
+      bObj.value = 255 - Math.min(255, y/255*(255-k)+k);
+
+      cmykSampleObj.style.backgroundColor=rgb2hex(rObj.value,gObj.value,bObj.value);
+
+      outGrayObj.value = Math.round((2449*rObj.value + 4805*gObj.value + 938*bObj.value)/Math.pow(2,13));
+      outKObj.value = Math.round((255-outGrayObj.value)/255*100);
+
+      kSampleObj.style.backgroundColor=rgb2hex(outGrayObj.value,outGrayObj.value,outGrayObj.value);
+
+    }
+
+    /**
+    * RGB値を十六進表記に変換する
+    * @param {Array} rgb - RGB値
+    * @returns {String} RGB値の十六進表記(#000000-#FFFFFF)
+    * @author https://lab.syncer.jp/Web/JavaScript/Snippet/60/
+    */
+    function rgb2hex ( r,g,b ) {
+      var tR = become0to255(r);
+      var tG = become0to255(g);
+      var tB = become0to255(b);
+      var tmpR = Number(tR).toString(16);
+      if(tmpR<16){
+        tmpR = "0"+tmpR
+      }
+      var tmpG = Number(tG).toString(16);
+      if(tmpG<16){
+        tmpG = "0"+tmpG
+      }
+      var tmpB = Number(tB).toString(16);
+      if(tmpB<16){
+        tmpB = "0"+tmpB
+        }
+      return "#" + tmpR + tmpG + tmpB;
+    }
+    function become0to255(inputValue){
+      var tmp = become255(Number(inputValue));
+      tmp = become0(tmp);
+      return Number(tmp);
+    }
+    function become255(inputValue){
+      if(255 < inputValue){
+        return 255;
+      }
+      return inputValue;
+    }
+    function become0(inputValue){
+      if(inputValue < 0){
+        return 0;
+      }
+      return inputValue;
+    }
+    </script>
+</head>
+<body onload="culc()">
+
+<!-- コンテンツを記述 -->
+<p style="display: inline-block;">
+  C(明 0-100 暗)<input type="number" id="inC" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+  M(明 0-100 暗)<input type="number" id="inM" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+  Y(明 0-100 暗)<input type="number" id="inY" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+  K(明 0-100 暗)<input type="number" id="inK" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+</p>
+<p id="inCMYKsample" style="display: inline-block;width: 100px;height: 100;border: 1px solid black;">
+  sample color
+</p>
+
+<p>
+  R(暗 0-255 明)<input type="number" id="outR" readonly><br>
+  G(暗 0-255 明)<input type="number" id="outG" readonly><br>
+  B(暗 0-255 明)<input type="number" id="outB" readonly><br>
+</p>
+
+
+<p style="display: inline-block;">
+  gray(暗 0-255 明)<input type="number" id="outGray" readonly><br>
+  　　　↓　K単色に変換<br>
+  K(明 0-100 暗)<input type="number" id="outK" readonly><br>
+</p>
+
+<p id="outKsample" style="display: inline-block;width: 100px;height: 100;border: 1px solid black;">
+    sample color
+</p>
+  
+<!-- スクリプトでブロッキングを起こすものはここに記述
+ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
+<!-- SCRIPTS -->
+<!-- 例: <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script> -->
+</body>
+</html>
