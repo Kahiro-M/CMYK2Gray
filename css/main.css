@@ -1,0 +1,25 @@
+html { 
+  /* html要素のフォントサイズを「62.5%」にすると、全要素で1rem = 10px 1.6rem = 16px と切りよくremとpxが連動する */
+  font-size: 62.5%; 
+} 
+body{
+  font-size: 1.6rem;
+  background-color: white;
+  color: black;
+}
+.sampleColor{
+  width: 15.0rem;
+  height: 15.0rem;
+  border: 1px solid black;
+  display:inline-block;
+  text-align: center;
+}
+.colorInput{
+  width: 30.0rem;
+  height: 15.0rem;
+  border: 1px solid black;
+  display: inline-block;
+}
+/* style="display: inline-block;width: 100px;height: 100;border: 1px solid black;" */
+/* <p id="outKsample" style="display: inline-block;width: 100px;height: 100;border: 1px solid black;"> */
+/* <p style="display: inline-block;"> */
