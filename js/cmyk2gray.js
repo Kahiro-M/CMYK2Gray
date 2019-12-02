@@ -16,9 +16,9 @@ function culc(){
   y = Math.round(yObj.value/100*255);
   k = Math.round(kObj.value/100*255);
 
-  rObj.value = 255 - Math.min(255, c/255*(255-k)+k);
-  gObj.value = 255 - Math.min(255, m/255*(255-k)+k);
-  bObj.value = 255 - Math.min(255, y/255*(255-k)+k);
+  rObj.value = Math.round(255 - Math.min(255, c/255*(255-k)+k));
+  gObj.value = Math.round(255 - Math.min(255, m/255*(255-k)+k));
+  bObj.value = Math.round(255 - Math.min(255, y/255*(255-k)+k));
 
   cmykSampleObj.style.backgroundColor=rgb2hex(rObj.value,gObj.value,bObj.value);
 

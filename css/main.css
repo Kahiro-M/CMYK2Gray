@@ -6,19 +6,46 @@ body{
   font-size: 1.6rem;
   background-color: white;
   color: black;
+  padding: 0rem;
+  margin: 0rem;
 }
 .sampleColor{
   width: 15.0rem;
-  height: 15.0rem;
-  border: 1px solid black;
-  display:inline-block;
+  height: 10.0rem;
+/*  border: 1px solid black;*/
   text-align: center;
+  vertical-align:  middle;
+  display: inline-block;
+  padding: 0.5rem;
+  margin: 1rem;
 }
 .colorInput{
-  width: 30.0rem;
-  height: 15.0rem;
-  border: 1px solid black;
+  width: 25.0rem;
+  height: 10.0rem;
+/*  border: 1px solid black;*/
   display: inline-block;
+  vertical-align:middle;
+  margin: 1rem;
+  padding: 0.5rem;
+}
+.colorMid{
+  display:none;
+/*  display:block;*/
+  vertical-align:middle;
+}
+input{
+	width:4rem;
+	padding: 0.3rem;
+	margin-left: 1rem;
+}
+li {
+	list-style: none;
+}
+label{
+	width: 15rem;
+/*	border: 1px solid black;*/
+    float: left;
+
 }
 /* style="display: inline-block;width: 100px;height: 100;border: 1px solid black;" */
 /* <p id="outKsample" style="display: inline-block;width: 100px;height: 100;border: 1px solid black;"> */

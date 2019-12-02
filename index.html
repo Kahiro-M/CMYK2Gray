@@ -55,32 +55,66 @@
 <body onload="culc()">
 
 <!-- コンテンツを記述 -->
+
 <div id="inCMYKsample" class="sampleColor">
-  sample color
+  Input Color
 </div>
+
+<div id="" class="colorInput">
+	<li>
+		<label class="colorName">C<sub>(0%-100%)</sub></label>
+		<input type="number" id="inC" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+	</li>
+	<li>
+		<label class="colorName">M<sub>(0%-100%)</sub></label>
+		<input type="number" id="inM" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+	</li>
+	<li>
+  		<label class="colorName">Y<sub>(0%-100%)</sub></label>
+		<input type="number" id="inY" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+	</li>
+	<li>
+		<label class="colorName">K<sub>(0%-100%)</sub></label>
+		<input type="number" id="inK" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+	</li>
+</div>
+	
+<div></div>
+<div class="colorMid">
+	<li>
+		<label class="colorName">R<sub>(暗 0-255 明)</sub></label>
+		<input type="number" id="outR" readonly><br>
+	</li>
+	<li>
+		<label class="colorName">G<sub>(暗 0-255 明)</sub></label>
+		<input type="number" id="outG" readonly><br>
+	</li>
+	<li>
+		<label class="colorName">B<sub>(暗 0-255 明)</sub></label>
+		<input type="number" id="outB" readonly><br>
+	</li>
+</div>
+
+<div id="outKsample" class="sampleColor">
+    Output Grayscale
+</div>
+	
 <div class="colorInput">
-  C(明 0-100 暗)<input type="number" id="inC" onchange="culc()" value="0" step="1" max="100" min="0"><br>
-  M(明 0-100 暗)<input type="number" id="inM" onchange="culc()" value="0" step="1" max="100" min="0"><br>
-  Y(明 0-100 暗)<input type="number" id="inY" onchange="culc()" value="0" step="1" max="100" min="0"><br>
-  K(明 0-100 暗)<input type="number" id="inK" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+<div class="colorMid">
+	<li>
+		<label class="colorName">gray<sub>(0-255)</sub></label>
+		<input type="number" id="outGray" readonly><br>
+	</li>
+	<li>
+		<label class="colorName">↓　K単色に変換</label><br>
+	</li>
+</div>
+	<li>
+		<label class="colorName">K<sub>(0%-100%)</sub></label>
+		<input type="number" id="outK" readonly><br>
+	</li>
 </div>
 
-<p>
-  R(暗 0-255 明)<input type="number" id="outR" readonly><br>
-  G(暗 0-255 明)<input type="number" id="outG" readonly><br>
-  B(暗 0-255 明)<input type="number" id="outB" readonly><br>
-</p>
-
-
-<p class="">
-  gray(暗 0-255 明)<input type="number" id="outGray" readonly><br>
-  　　　↓　K単色に変換<br>
-  K(明 0-100 暗)<input type="number" id="outK" readonly><br>
-</p>
-
-<p id="outKsample" class="">
-    sample color
-</p>
   
 <!-- スクリプトでブロッキングを起こすものはここに記述
 ブロッキングを起こす原因としては、CSSのセレクタ操作（IE）、負荷の高いDOM操作、多数のスクリプトなど -->
