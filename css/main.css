@@ -11,7 +11,7 @@ body{
 }
 .sampleColor{
   width: 15.0rem;
-  height: 10.0rem;
+  height: 15rem;
 /*  border: 1px solid black;*/
   text-align: center;
   vertical-align:  middle;
@@ -20,8 +20,8 @@ body{
   margin: 1rem;
 }
 .colorInput{
-  width: 25.0rem;
-  height: 10.0rem;
+  width: 22.0rem;
+  height: 15rem;
 /*  border: 1px solid black;*/
   display: inline-block;
   vertical-align:middle;
@@ -35,16 +35,25 @@ body{
 }
 input{
 	width:4rem;
+	height:2.5rem;
 	padding: 0.3rem;
-	margin-left: 1rem;
+	margin: 0.1rem;
+	margin-top: 0.5rem;
+/*	margin-left: 1rem;*/
+	border: 0px solid black;
+	border-left: 0.4rem double black;
+	background-color: #F0F0F0;
+
 }
 li {
 	list-style: none;
 }
 label{
-	width: 15rem;
+	width: 9.3rem;
+	height: 2.5rem;
 /*	border: 1px solid black;*/
     float: left;
+	margin-top: 0.5rem;
 
 }
 /* style="display: inline-block;width: 100px;height: 100;border: 1px solid black;" */
