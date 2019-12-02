@@ -63,19 +63,19 @@
 <div id="" class="colorInput">
 	<li>
 		<label class="colorName">C<sub>(0%-100%)</sub></label>
-		<input type="number" id="inC" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+		<input class="colorInputNumber" type="number" id="inC" onchange="culc()" value="0" step="1" max="100" min="0"><br>
 	</li>
 	<li>
 		<label class="colorName">M<sub>(0%-100%)</sub></label>
-		<input type="number" id="inM" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+		<input class="colorInputNumber" type="number" id="inM" onchange="culc()" value="0" step="1" max="100" min="0"><br>
 	</li>
 	<li>
   		<label class="colorName">Y<sub>(0%-100%)</sub></label>
-		<input type="number" id="inY" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+		<input class="colorInputNumber" type="number" id="inY" onchange="culc()" value="0" step="1" max="100" min="0"><br>
 	</li>
 	<li>
 		<label class="colorName">K<sub>(0%-100%)</sub></label>
-		<input type="number" id="inK" onchange="culc()" value="0" step="1" max="100" min="0"><br>
+		<input class="colorInputNumber" type="number" id="inK" onchange="culc()" value="0" step="1" max="100" min="0"><br>
 	</li>
 </div>
 	
@@ -83,15 +83,15 @@
 <div class="colorMid">
 	<li>
 		<label class="colorName">R<sub>(暗 0-255 明)</sub></label>
-		<input type="number" id="outR" readonly><br>
+		<input class="colorInputNumber" type="number" id="outR" readonly><br>
 	</li>
 	<li>
 		<label class="colorName">G<sub>(暗 0-255 明)</sub></label>
-		<input type="number" id="outG" readonly><br>
+		<input class="colorInputNumber" type="number" id="outG" readonly><br>
 	</li>
 	<li>
 		<label class="colorName">B<sub>(暗 0-255 明)</sub></label>
-		<input type="number" id="outB" readonly><br>
+		<input class="colorInputNumber" type="number" id="outB" readonly><br>
 	</li>
 </div>
 
@@ -103,7 +103,7 @@
 <div class="colorMid">
 	<li>
 		<label class="colorName">gray<sub>(0-255)</sub></label>
-		<input type="number" id="outGray" readonly><br>
+		<input class="colorInputNumber" type="number" id="outGray" readonly><br>
 	</li>
 	<li>
 		<label class="colorName">↓　K単色に変換</label><br>
@@ -111,8 +111,20 @@
 </div>
 	<li>
 		<label class="colorName">K<sub>(0%-100%)</sub></label>
-		<input type="number" id="outK" readonly><br>
+		<input class="colorInputNumber" type="number" id="outK" readonly><br>
 	</li>
+
+	<div class="transTypeChoice">
+		<li>
+			<input type="radio" name="example" value="test1" checked>test1
+		</li>
+		<li>
+			<input type="radio" name="example" value="test2">test2
+		</li>
+		<li>
+			<input type="radio" name="example" value="test3">test3
+		</li>
+	</div>
 </div>
 
   
